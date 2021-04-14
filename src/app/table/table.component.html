@@ -1,0 +1,36 @@
+<div class="table-responsive">
+<table class="table" cellspacing="0" cellpadding="0">
+    <thead>
+    <tr>
+        <th *ngFor ="let column of headers;let indexOfelement=index;">
+            {{column}}
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor = "let row of rows;let indexOfelement=index;">
+        <td  (contextmenu)="onRightClick($event,row)">
+            <select #myDropDownListcountry (change)='onGroupChange(myDropDownListcountry.value,indexOfelement)'>
+                <option  *ngFor="let item of items;index as i" [value]="i" [selected]="i==myVariable[indexOfelement]">{{item.country}}</option>
+            </select>
+            <div class="dropdown"  *ngIf="row.isShowDiv">
+                <ul>
+                    <!-- <li><a href="javascript:void(0)" (click)="addcolumnleft()">Add Column Left</a></li>
+                    <li><a href="javascript:void(0)" (click)="addcolumnright()">Add Column Right</a></li> -->
+                    <li><a href="javascript:void(0)" (click)="addrowtop(indexOfelement,row)">Add Row Top</a></li>
+                    <li><a href="javascript:void(0)" (click)="addrowbottom(indexOfelement,row)">Add Row Bottom</a></li>
+                    <li><a href="javascript:void(0)" (click)="deleterow(row,row)">Remove Row</a></li>
+                </ul>
+            </div>
+        </td>
+        <td  (contextmenu)="onRightClick($event,row)">
+            <select #myDropDownListstate (change)='onGroupChange(myDropDownListstate.value,indexOfelement)'>
+                <option  *ngFor="let item of items;index as i" [value]="i" [selected]="i==myVariable[indexOfelement]">{{item.city}}</option>
+            </select>   
+            
+                 
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>

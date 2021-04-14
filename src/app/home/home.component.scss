@@ -1,0 +1,28 @@
+.mat-elevation-z8{width: 100%;}.table-responsive{padding: 30px;}
+
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .example-option-img {
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+  
+  [dir='rtl'] .example-option-img {
+    margin-right: 0;
+    margin-left: 8px;
+  }
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 10px 20px;
+}
+
+.mat-elevation-z8 td {
+    position: relative;padding-right: 40px;
+}
+.example-full-width + .mat-icon-button {
+    position: absolute;
+    right: 0;
+    margin-top: 5px;
+}

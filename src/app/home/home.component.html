@@ -1,0 +1,82 @@
+
+<div class="table-responsive">
+<table mat-table [dataSource]="data" class="mat-elevation-z8" >
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="countryposition">
+      <th mat-header-cell *matHeaderCellDef> Country </th>
+      <td mat-cell *matCellDef>   
+        <mat-form-field class="example-full-width">
+            <input
+              matInput
+              placeholder="Country"
+              aria-label="country"
+              [matAutocomplete]="auto"
+              [formControl]="countryCtrl"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let country of filteredcountrys | async"
+                [value]="country.name"
+              >
+                <span>{{country.name}}</span>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="addleftColumn()"> Add Left column </button>
+            <button mat-menu-item (click)="addrightColumn()"> Add Right column </button>
+            <button mat-menu-item (click)="removeColumn()"> Remove column </button>
+            <button mat-menu-item (click)="addrow()"> Add Row </button>
+            <button mat-menu-item (click)="deleterow()"> Add Row </button>
+          </mat-menu>
+    </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="capitalname">
+      <th mat-header-cell *matHeaderCellDef> Capital </th>
+      <td mat-cell *matCellDef>
+        <mat-form-field class="example-full-width">
+            <input
+              matInput
+              placeholder="State"
+              aria-label="State"
+              [matAutocomplete]="auto"
+              [formControl]="stateCtrl"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let state of filteredStates | async"
+                [value]="state.name"
+              >
+                <span>{{state.name}}</span>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="addColumn()"> Add column </button>
+            <button mat-menu-item (click)="removeColumn()"> Remove column </button>
+            <button mat-menu-item (click)="addrow()"> Add Row </button>
+            <button mat-menu-item (click)="removerow(state)"> Delete Row </button>
+          </mat-menu>
+      </td>
+    </ng-container>
+  
+  
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+  </table>
+
+  
+</div>
+
